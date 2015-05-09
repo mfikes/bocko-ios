@@ -50,6 +50,8 @@ Try some of the examples from the [Bocko](https://github.com/mfikes/bocko) page.
     (recur x' y' vx' vy')))
 ```
 
+Here is a pic of what `bocko-ios` looks like in action:
+
 ![iOS and REPL](https://pbs.twimg.com/media/CElZIPdUIAAC7Us.jpg)
 
 ### rlwrap
