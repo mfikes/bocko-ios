@@ -26,6 +26,6 @@ cljs.user=> (plot 3 4)
 nil
 ```
 
-Try some of the examples from the Bocko page. (Note that you can't block the JavaScriptCore using `loop/recur`, but `core.async` may help!)
+Try some of the examples from the [Bocko](https://github.com/mfikes/bocko) page. (Note that you can't block the JavaScriptCore using `loop/recur`, but `core.async` may help!)
 
 ![iOS and REPL](https://pbs.twimg.com/media/CElZIPdUIAAC7Us.jpg)
