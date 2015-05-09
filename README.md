@@ -29,3 +29,15 @@ nil
 Try some of the examples from the [Bocko](https://github.com/mfikes/bocko) page. (Note that you can't block the JavaScriptCore thread using `loop/recur`, but `core.async` may help!)
 
 ![iOS and REPL](https://pbs.twimg.com/media/CElZIPdUIAAC7Us.jpg)
+
+### rlwrap
+
+For a better REPL experience (keyboard input editing and history support), you can install
+[rlwrap](http://utopia.knoware.nl/~hlub/uck/rlwrap/) under OS X with
+[Homebrew](http://brew.sh/):
+
+```
+brew install rlwrap
+```
+
+Then you can start the Ambly REPL with `lein run -m ambly.repl.jsc`.
