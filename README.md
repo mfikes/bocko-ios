@@ -32,7 +32,7 @@ Here is a pic of what `bocko-ios` looks like in action:
 
 # Examples
 
-Try some of the examples from the [Bocko](https://github.com/mfikes/bocko) page.
+Try some of the examples from the [Bocko](https://github.com/mfikes/bocko#examples) page.
 
 # Threading Concerns
 
