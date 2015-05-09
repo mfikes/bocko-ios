@@ -1,1 +1,2 @@
-(ns bocko-ios.core)
+(ns bocko-ios.core
+  (:require bocko.core))
