@@ -15,7 +15,7 @@ You need Lein and CocoaPods and Xcode.
 5. Open `Bocko.xcworkspace` and run the Bocko app in a simulator or on a device.
 6. In the `ClojureScript` directory run `lein run -m ambly.repl.jsc`.
 7. Choose your discovered Bocko app.
-8. In the REPL, `(require '[bocko.core :refer [color plot scrn hlin vlin clear]])`.
+8. In the REPL, `(require '[bocko.core :refer [color plot scrn hlin vlin clear *color*]])`.
 
 Now you can use Bocko, plotting in your simulator or on your device.
 
