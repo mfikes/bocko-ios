@@ -73,9 +73,12 @@ void uncaughtExceptionHandler(NSException *exception) {
     
     [self requireAppNamespaces:self.contextManager.context];
     
-    // Call JS init fn if needed
+    // Call JS init fn
+    JSValue* initFn = [self getValue:@"init" inNamespace:@"bocko-ios.core" fromContext:self.contextManager.context];
+    NSAssert(!initFn.isUndefined, @"Could not find the app init function");
+    [initFn callWithArguments:@[]];
 #else
-    // Call JS init fn if needed
+    // Call JS init fn
 #endif
     
     // Other unconditional app setup goes here
@@ -143,6 +146,27 @@ void uncaughtExceptionHandler(NSException *exception) {
             abort();
         }
     }
+}
+
+- (JSValue*)getValue:(NSString*)name inNamespace:(NSString*)namespace fromContext:(JSContext*)context
+{
+    JSValue* namespaceValue = nil;
+    for (NSString* namespaceElement in [namespace componentsSeparatedByString: @"."]) {
+        if (namespaceValue) {
+            namespaceValue = namespaceValue[[self munge:namespaceElement]];
+        } else {
+            namespaceValue = context[[self munge:namespaceElement]];
+        }
+    }
+    
+    return namespaceValue[[self munge:name]];
+}
+
+- (NSString*)munge:(NSString*)s
+{
+    return [[[s stringByReplacingOccurrencesOfString:@"-" withString:@"_"]
+             stringByReplacingOccurrencesOfString:@"!" withString:@"_BANG_"]
+            stringByReplacingOccurrencesOfString:@"?" withString:@"_QMARK_"];
 }
 
 @end
