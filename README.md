@@ -28,7 +28,7 @@ nil
 
 Try some of the examples from the [Bocko](https://github.com/mfikes/bocko) page. 
 
-Note that you can't block the JavaScriptCore thread using direct `loop/recur`, but with `core.async` (which is included as a dependency) you can achieve the same using `go-loop`. For example, here is the bouncing ball example, with just two changes:
+Note that you can't block the JavaScriptCore thread using direct `loop/recur`, but with `core.async` (which is included as a dependency) you can achieve the same using `go-loop`. For example, here is the bouncing ball example, _with just two changes_:
 
 ```clojure
 (require '[cljs.core.async :refer [<! timeout]])
