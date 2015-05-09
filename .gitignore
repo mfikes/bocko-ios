@@ -3,3 +3,5 @@ iOS/Bocko/Pods
 Podfile.lock
 xcuserdata
 iOS/Bocko.xcodeproj/xcuserdata
+iOS/Pods
+iOS/Bocko.xcworkspace
