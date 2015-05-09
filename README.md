@@ -26,7 +26,29 @@ cljs.user=> (plot 3 4)
 nil
 ```
 
-Try some of the examples from the [Bocko](https://github.com/mfikes/bocko) page. (Note that you can't block the JavaScriptCore thread using `loop/recur`, but `core.async` may help!)
+Try some of the examples from the [Bocko](https://github.com/mfikes/bocko) page. Note that you can't block the JavaScriptCore thread using direct `loop/recur`, but with `core.async` (which is included as a dependency) you can achieve the same using `go-loop`. For example, here is the bouncing ball example, with just two changes:
+
+```clojure
+(require '[cljs.core.async :refer [<! timeout]])
+(require-macros '[cljs.core.async.macros :refer [go-loop]])
+
+(go-loop [x 5 y 23 vx 1 vy 1]                     ;; was (loop ...
+  ; First determine new location and velocity,
+  ; reversing direction if bouncing off edge.
+  (let [x' (+ x vx)
+        y' (+ y vy)
+        vx' (if (< 0 x' 39) vx (- vx))
+        vy' (if (< 0 y' 39) vy (- vy))]
+    ; Erase drawing at previous location
+    (color :black)
+    (plot x y)
+    ; Draw ball in new location
+    (color :dark-blue)
+    (plot x' y')
+    ; Sleep a little and then loop around again
+    (<! (timeout 50))                             ;; was (Thread/sleep 50)
+    (recur x' y' vx' vy')))
+```
 
 ![iOS and REPL](https://pbs.twimg.com/media/CElZIPdUIAAC7Us.jpg)
 
