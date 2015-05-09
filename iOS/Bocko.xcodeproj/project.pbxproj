@@ -14,6 +14,7 @@
 		ED65C3E51AFE424400FEC15F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED65C3E31AFE424400FEC15F /* Main.storyboard */; };
 		ED65C3E71AFE424400FEC15F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED65C3E61AFE424400FEC15F /* Images.xcassets */; };
 		ED65C3EA1AFE424400FEC15F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED65C3E81AFE424400FEC15F /* LaunchScreen.xib */; };
+		ED65C4321AFE4D7400FEC15F /* out in Resources */ = {isa = PBXBuildFile; fileRef = ED65C4311AFE4D7400FEC15F /* out */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		ED65C3E41AFE424400FEC15F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED65C3E61AFE424400FEC15F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ED65C3E91AFE424400FEC15F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		ED65C4311AFE4D7400FEC15F /* out */ = {isa = PBXFileReference; lastKnownFileType = folder; name = out; path = ../ClojureScript/target/out; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		ED65C3CD1AFE424300FEC15F = {
 			isa = PBXGroup;
 			children = (
+				ED65C4311AFE4D7400FEC15F /* out */,
 				ED65C3D81AFE424400FEC15F /* Bocko */,
 				ED65C3D71AFE424400FEC15F /* Products */,
 				D109E4EDD80745F21F6E0500 /* Pods */,
@@ -164,6 +167,7 @@
 				ED65C3E51AFE424400FEC15F /* Main.storyboard in Resources */,
 				ED65C3EA1AFE424400FEC15F /* LaunchScreen.xib in Resources */,
 				ED65C3E71AFE424400FEC15F /* Images.xcassets in Resources */,
+				ED65C4321AFE4D7400FEC15F /* out in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
