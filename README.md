@@ -45,6 +45,8 @@ For example, here is the painting colors / bouncing ball example from the Bocko 
 3. Make use of `(<! (timeout n))` instead of `(Thread/sleep n)`, where _n_ is in milliseconds.
 4. When binding the dynamic var `*color*`, don't allow the `core.async` `go` macro to defeat the binding via its code rewriting. Specifically, reduce the scope of the binding so that no async operation (like `<!`) is within scope of the binding.
 
+With these revisions, this works:
+
 ```clojure
 (require '[cljs.core.async :refer [<! timeout]])
 (require-macros '[cljs.core.async.macros :refer [go-loop]])
