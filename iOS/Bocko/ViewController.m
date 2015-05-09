@@ -1,4 +1,5 @@
 #import "ViewController.h"
+#import "CanvasView.h"
 
 #import "AppDelegate.h"
 
@@ -10,7 +11,9 @@
 
 - (void)plotX:(int)x Y:(int)y red:(int)r green:(int)g blue:(int)b
 {
-    NSLog(@"%d %d %d %d %d", x, y, r, g, b);
+    CanvasView* canvasView = (CanvasView*)self.view;
+    [canvasView plotX:x Y:y red:r green:g blue:b];
+    [self.view setNeedsDisplay];
 }
 
 - (void)viewDidLoad

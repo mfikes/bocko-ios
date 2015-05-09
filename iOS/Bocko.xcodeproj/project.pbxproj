@@ -15,6 +15,7 @@
 		ED65C3E71AFE424400FEC15F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED65C3E61AFE424400FEC15F /* Images.xcassets */; };
 		ED65C3EA1AFE424400FEC15F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED65C3E81AFE424400FEC15F /* LaunchScreen.xib */; };
 		ED65C4321AFE4D7400FEC15F /* out in Resources */ = {isa = PBXBuildFile; fileRef = ED65C4311AFE4D7400FEC15F /* out */; };
+		ED65C4351AFE675300FEC15F /* CanvasView.m in Sources */ = {isa = PBXBuildFile; fileRef = ED65C4341AFE675300FEC15F /* CanvasView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		ED65C3E61AFE424400FEC15F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ED65C3E91AFE424400FEC15F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		ED65C4311AFE4D7400FEC15F /* out */ = {isa = PBXFileReference; lastKnownFileType = folder; name = out; path = ../ClojureScript/target/out; sourceTree = "<group>"; };
+		ED65C4331AFE675300FEC15F /* CanvasView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CanvasView.h; sourceTree = "<group>"; };
+		ED65C4341AFE675300FEC15F /* CanvasView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CanvasView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 				ED65C3DE1AFE424400FEC15F /* AppDelegate.m */,
 				ED65C3E01AFE424400FEC15F /* ViewController.h */,
 				ED65C3E11AFE424400FEC15F /* ViewController.m */,
+				ED65C4331AFE675300FEC15F /* CanvasView.h */,
+				ED65C4341AFE675300FEC15F /* CanvasView.m */,
 				ED65C3E31AFE424400FEC15F /* Main.storyboard */,
 				ED65C3E61AFE424400FEC15F /* Images.xcassets */,
 				ED65C3E81AFE424400FEC15F /* LaunchScreen.xib */,
@@ -213,6 +218,7 @@
 			files = (
 				ED65C3E21AFE424400FEC15F /* ViewController.m in Sources */,
 				ED65C3DF1AFE424400FEC15F /* AppDelegate.m in Sources */,
+				ED65C4351AFE675300FEC15F /* CanvasView.m in Sources */,
 				ED65C3DC1AFE424400FEC15F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
