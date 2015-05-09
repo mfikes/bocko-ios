@@ -1,19 +1,29 @@
 #import "ViewController.h"
 
+#import "AppDelegate.h"
+
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+- (void)plotX:(int)x Y:(int)y red:(int)r green:(int)g blue:(int)b
+{
+    NSLog(@"%d %d %d %d %d", x, y, r, g, b);
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self handleViewDidLoad];
+}
+
+- (void)handleViewDidLoad
+{
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [appDelegate viewReady:self];
 }
 
 @end
