@@ -34,14 +34,14 @@ Try some of the examples from the [Bocko](https://github.com/mfikes/bocko) page.
 
 # Threading Concerns
 
-Note that you can't block the JavaScriptCore thread using direct `loop/recur`, but with `core.async` (which is included as a dependency) you can achieve the same using `go-loop` and other requisite changes.
+Note that you shouldn't block the JavaScriptCore thread using direct `loop/recur`, otherwise you'll lock up the only processing thread. But, with `core.async` (which is included as a dependency) you can achieve the desired result using `go-loop` along with other requisite changes.
 
 For example, here is the painting colors / bouncing ball example from the Bocko page, where the changes needed comprise:
 
 1. Don't use `future`, as there are no threads.
 2. Use `go-loop` instead of `loop`.
 3. Make use of `(<! (timeout n))` instead of `(Thread/sleep n)`, where _n_ is in milliseconds.
-4. When binding the dynamic var `*color*`, don't allow `core.async` to rewrite the code, defeating the binding. In other words, reduce the scope of the binding so that no async operation like `<!` is within scope of the binding.
+4. When binding the dynamic var `*color*`, don't allow the `core.async` `go` macro to defeat the binding via its code rewriting. Specifically, reduce the scope of the binding so that no async operation (like `<!`) is within scope of the binding.
 
 ```clojure
 (require '[cljs.core.async :refer [<! timeout]])
