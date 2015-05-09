@@ -26,7 +26,13 @@ cljs.user=> (plot 3 4)
 nil
 ```
 
-Try some of the examples from the [Bocko](https://github.com/mfikes/bocko) page. 
+Here is a pic of what `bocko-ios` looks like in action:
+
+![iOS and REPL](https://pbs.twimg.com/media/CElZIPdUIAAC7Us.jpg)
+
+Try some of the examples from the [Bocko](https://github.com/mfikes/bocko) page.
+
+# Threading Concerns
 
 Note that you can't block the JavaScriptCore thread using direct `loop/recur`, but with `core.async` (which is included as a dependency) you can achieve the same using `go-loop` and other requisite changes.
 
@@ -81,10 +87,6 @@ For example, here is the painting colors / bouncing ball example from the Bocko 
       (<! (timeout 50))
       (recur x' y' vx' vy'))))
 ```
-
-Here is a pic of what `bocko-ios` looks like in action:
-
-![iOS and REPL](https://pbs.twimg.com/media/CElZIPdUIAAC7Us.jpg)
 
 ### rlwrap
 
