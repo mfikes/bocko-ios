@@ -26,7 +26,9 @@ cljs.user=> (plot 3 4)
 nil
 ```
 
-Try some of the examples from the [Bocko](https://github.com/mfikes/bocko) page. Note that you can't block the JavaScriptCore thread using direct `loop/recur`, but with `core.async` (which is included as a dependency) you can achieve the same using `go-loop`. For example, here is the bouncing ball example, with just two changes:
+Try some of the examples from the [Bocko](https://github.com/mfikes/bocko) page. 
+
+Note that you can't block the JavaScriptCore thread using direct `loop/recur`, but with `core.async` (which is included as a dependency) you can achieve the same using `go-loop`. For example, here is the bouncing ball example, with just two changes:
 
 ```clojure
 (require '[cljs.core.async :refer [<! timeout]])
