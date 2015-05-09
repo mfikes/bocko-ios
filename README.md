@@ -103,3 +103,7 @@ brew install rlwrap
 ```
 
 Then you can start the Ambly REPL with `lein run -m ambly.repl.jsc`.
+
+# License
+
+Distributed under the Eclipse Public License, which is also used by Clojure.
