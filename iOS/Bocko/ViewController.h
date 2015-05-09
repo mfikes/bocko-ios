@@ -5,6 +5,7 @@
 @protocol CanvasViewController <JSExport>
 
 - (void)plotX:(int)x Y:(int)y red:(int)r green:(int)g blue:(int)b;
+- (void)refreshDisplay;
 
 @end
 

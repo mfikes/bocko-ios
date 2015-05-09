@@ -13,6 +13,10 @@
 {
     CanvasView* canvasView = (CanvasView*)self.view;
     [canvasView plotX:x Y:y red:r green:g blue:b];
+}
+
+- (void)refreshDisplay
+{
     [self.view setNeedsDisplay];
 }
 

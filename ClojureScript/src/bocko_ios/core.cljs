@@ -6,9 +6,13 @@
   (bocko.core/set-create-canvas
     (fn [color-map raster width height _ _]
       (add-watch raster :monitor
-        (fn [_ _ o n]
-          (when (not= o n)
+        (fn [_ _ old new]
+          (when-not (= old new)
             (doseq [x (range width)
                     y (range height)]
-              (let [[r g b] ((get-in n [x y]) color-map)]
-                (.plotXYRedGreenBlue canvas-view-controller x y r g b)))))))))
+              (let [old-color (get-in old [x y])
+                    new-color (get-in new [x y])]
+                (when-not (= old-color new-color)
+                  (let [[r g b] (new-color color-map)]
+                    (.plotXYRedGreenBlue canvas-view-controller x y r g b)))))
+            (.refreshDisplay canvas-view-controller)))))))
