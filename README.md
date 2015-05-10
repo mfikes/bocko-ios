@@ -8,14 +8,13 @@ You need Lein and CocoaPods and Xcode.
 
 # Usage
 
-1. Clone the [Ambly](https://github.com/omcljs/ambly) repo, and in its `Clojure` directory do a `lein install` in order to build a local snapshot of Ambly.
-2. Clone this repo.
-3. In the `ClojureScript` directory run `lein cljsbuild once dev`.
-4. In the `iOS` directory run `pod install`.
-5. Open `Bocko.xcworkspace` and run the Bocko app in a simulator or on a device.
-6. In the `ClojureScript` directory run `lein run -m ambly.repl.jsc`.
-7. Choose your discovered Bocko app.
-8. In the REPL, `(require '[bocko.core :refer [color plot scrn hlin vlin clear *color*]])`.
+1. Clone this repo.
+2. In the `ClojureScript` directory run `lein cljsbuild once dev`.
+3. In the `iOS` directory run `pod install`.
+4. Open `Bocko.xcworkspace` and run the Bocko app in a simulator or on a device.
+5. In the `ClojureScript` directory run `script/repl`.
+6. Choose your discovered Bocko app.
+7. In the REPL, `(require '[bocko.core :refer [color plot scrn hlin vlin clear *color*]])`.
 
 Now you can use Bocko, plotting in your simulator or on your device.
 
@@ -102,7 +101,7 @@ For a better REPL experience (keyboard input editing and history support), you c
 brew install rlwrap
 ```
 
-Then you can start the Ambly REPL with `lein run -m ambly.repl.jsc`.
+Then `script/repl` will automatically detect that you have `rlwrap` installed and use it.
 
 # License
 
