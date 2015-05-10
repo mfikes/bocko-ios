@@ -8,11 +8,14 @@
       (add-watch raster :monitor
         (fn [_ _ old new]
           (when-not (= old new)
-            (doseq [x (range width)
-                    y (range height)]
-              (let [old-color (get-in old [x y])
-                    new-color (get-in new [x y])]
-                (when-not (= old-color new-color)
-                  (let [[r g b] (new-color color-map)]
-                    (.plotXYRedGreenBlue canvas-view-controller x y r g b)))))
+            (doseq [x (range width)]
+              (let [old-col (nth old x)
+                    new-col (nth new x)]
+                (when-not (= old-col new-col)
+                  (doseq [y (range height)]
+                    (let [old-color (nth old-col y)
+                          new-color (nth new-col y)]
+                      (when-not (= old-color new-color)
+                        (let [[r g b] (new-color color-map)]
+                          (.plotXYRedGreenBlue canvas-view-controller x y r g b))))))))
             (.refreshDisplay canvas-view-controller)))))))
