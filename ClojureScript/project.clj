@@ -1,4 +1,4 @@
-(defproject bocko-ios "0.1.0-SNAPSHOT"
+(defproject bocko-ios "0.1.0"
   :description "Use Bocko on iOS"
   :dependencies [[org.clojure/clojure "1.7.0-beta2"]
                  [org.clojure/clojurescript "0.0-3255"]
