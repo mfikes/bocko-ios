@@ -15,8 +15,8 @@
         self.backgroundColor = [UIColor clearColor];
         CGSize size = self.frame.size;
         self.drawingContext = [self createDrawingContext: size];
-        self.pixelWidth = size.width/40;
-        self.pixelHeight = size.height/40;
+        self.pixelWidth = (int)size.width/40.0;
+        self.pixelHeight = (int)size.height/40.0;
     }
     
     return self;
@@ -24,7 +24,7 @@
 
 - (void)plotX:(int)x Y:(int)y red:(int)r green:(int)g blue:(int)b
 {
-    CGRect rectangle = CGRectMake(x*self.pixelWidth, y*self.pixelHeight, self.pixelWidth+1, self.pixelHeight+1);
+    CGRect rectangle = CGRectMake(x*self.pixelWidth, y*self.pixelHeight, self.pixelWidth, self.pixelHeight);
     CGContextSetRGBFillColor(self.drawingContext, r/255.0, g/255.0, b/255.0, 1.0);
     CGContextSetRGBStrokeColor(self.drawingContext, r/255.0, g/255.0, b/255.0, 1.0);
     CGContextFillRect(self.drawingContext, rectangle);
