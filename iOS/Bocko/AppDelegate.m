@@ -2,17 +2,21 @@
 
 #import <JavaScriptCore/JavaScriptCore.h>
 
-#ifdef DEBUG
 #import "ABYContextManager.h"
+
+#ifdef DEBUG
 #import "ABYServer.h"
+#endif
 
 @interface AppDelegate ()
 
 @property (strong, nonatomic) ABYContextManager* contextManager;
+
+#ifdef DEBUG
 @property (strong, nonatomic) ABYServer* replServer;
+#endif
 
 @end
-#endif
 
 void uncaughtExceptionHandler(NSException *exception) {
     NSLog(@"CRASH: %@", exception);
@@ -38,7 +42,6 @@ void uncaughtExceptionHandler(NSException *exception) {
     // can do this unconditionally.
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
-#ifdef DEBUG
     // Set up the compiler output directory
     NSURL* compilerOutputDirectory = [[self privateDocumentsDirectory] URLByAppendingPathComponent:@"cljs-out"];
     
@@ -57,24 +60,31 @@ void uncaughtExceptionHandler(NSException *exception) {
     NSString *outPath = [[NSBundle mainBundle] pathForResource:@"out" ofType:nil];
     [fileManager copyItemAtPath:outPath toPath:compilerOutputDirectory.path error:nil];
     
+    JSContext* context = [[JSContext alloc] init];
+    
     NSLog(@"Initializing ClojureScript");
-    self.contextManager = [[ABYContextManager alloc] initWithContext:[[JSContext alloc] init]
+    self.contextManager = [[ABYContextManager alloc] initWithContext:context
                                              compilerOutputDirectory:compilerOutputDirectory];
     [self.contextManager setupGlobalContext];
     [self.contextManager setUpExceptionLogging];
     [self.contextManager setUpConsoleLog];
     [self.contextManager setUpTimerFunctionality];
+    
+    NSString* mainJsFilePath = [[compilerOutputDirectory URLByAppendingPathComponent:@"main" isDirectory:NO] URLByAppendingPathExtension:@"js"].path;
+    
+#ifdef DEBUG
     [self.contextManager setUpAmblyImportScript];
     
     NSURL* googDirectory = [compilerOutputDirectory URLByAppendingPathComponent:@"goog"];
     
-    [self.contextManager bootstrapWithDepsFilePath:[[compilerOutputDirectory URLByAppendingPathComponent:@"main" isDirectory:NO] URLByAppendingPathExtension:@"js"].path
+    [self.contextManager bootstrapWithDepsFilePath:mainJsFilePath
                                       googBasePath:[[googDirectory URLByAppendingPathComponent:@"base" isDirectory:NO] URLByAppendingPathExtension:@"js"].path];
     
     [self requireAppNamespaces:self.contextManager.context];
-    
 #else
 
+    [context evaluateScript:mainJsFilePath];
+    
 #endif
     
     // Other unconditional app setup goes here
