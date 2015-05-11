@@ -37,6 +37,8 @@ Try some of the examples from the [Bocko](https://github.com/mfikes/bocko#exampl
 
 If you would like to make an app that runs your ClojureScript upon launch, simply revise `bocko-ios.core/run-app` to run your code. If you then do a `lein cljsbuild once dev`, your code will be bundled into the app and executed upon launch.
 
+If you would like to make an optimized build of your standalone app, instead do `lein cljsbuild once rel` and change to a Release scheme in Xcode.
+
 # Threading Concerns
 
 Note that you shouldn't block the JavaScriptCore thread using direct `loop/recur`, otherwise you'll lock up the only processing thread. But, with `core.async` (which is included as a dependency) you can achieve the desired result using `go-loop` along with other requisite changes.
