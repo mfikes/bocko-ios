@@ -60,7 +60,10 @@ void uncaughtExceptionHandler(NSException *exception) {
     NSString *outPath = [[NSBundle mainBundle] pathForResource:@"out" ofType:nil];
     [fileManager copyItemAtPath:outPath toPath:compilerOutputDirectory.path error:nil];
     
+    // Create an instance of JavaScriptCore to run things
     JSContext* context = [[JSContext alloc] init];
+    
+    // Use Ambly to manage JavaScriptCore
     
     NSLog(@"Initializing ClojureScript");
     self.contextManager = [[ABYContextManager alloc] initWithContext:context
@@ -73,6 +76,9 @@ void uncaughtExceptionHandler(NSException *exception) {
     NSString* mainJsFilePath = [[compilerOutputDirectory URLByAppendingPathComponent:@"main" isDirectory:NO] URLByAppendingPathExtension:@"js"].path;
     
 #ifdef DEBUG
+    
+    // We assume the ClojureScript has been compiled using `lein cljsbuild once dev` to produce :none output
+    
     [self.contextManager setUpAmblyImportScript];
     
     NSURL* googDirectory = [compilerOutputDirectory URLByAppendingPathComponent:@"goog"];
@@ -81,9 +87,17 @@ void uncaughtExceptionHandler(NSException *exception) {
                                       googBasePath:[[googDirectory URLByAppendingPathComponent:@"base" isDirectory:NO] URLByAppendingPathExtension:@"js"].path];
     
     [self requireAppNamespaces:self.contextManager.context];
+    
 #else
 
-    [context evaluateScript:mainJsFilePath];
+    // We assume the ClojureScript has been compiled using `lein cljsbuild once rel` to produce :advanced output
+    
+    NSError* error = nil;
+    NSString* sourceText = [NSString stringWithContentsOfFile:mainJsFilePath encoding:NSUTF8StringEncoding error:&error];
+    
+    if (!error && sourceText) {
+        [context evaluateScript:sourceText];
+    }
     
 #endif
     
