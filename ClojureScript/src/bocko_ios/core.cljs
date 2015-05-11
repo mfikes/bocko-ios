@@ -1,6 +1,10 @@
 (ns bocko-ios.core
   (:require bocko.core))
 
+(defn run-app
+  []
+  (comment "Code here will be run when app launches"))
+
 (defn ^:export init
   [canvas-view-controller]
   (bocko.core/set-create-canvas
@@ -17,4 +21,6 @@
                           new-color (nth new-col y)]
                       (when-not (= old-color new-color)
                         (let [[r g b] (new-color color-map)]
-                          (.plotXYRedGreenBlue canvas-view-controller x y r g b))))))))))))))
+                          (.plotXYRedGreenBlue canvas-view-controller x y r g b)))))))))))))
+  (run-app))
+
