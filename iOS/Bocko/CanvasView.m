@@ -1,52 +1,51 @@
 #import "CanvasView.h"
 
-@interface CanvasView ()
-
-@property CGFloat pixelWidth;
-@property CGFloat pixelHeight;
-@property CGContextRef drawingContext;
-
-@end
+static int rpix[40][40];
+static int gpix[40][40];
+static int bpix[40][40];
 
 @implementation CanvasView
 
-- (id) initWithCoder: (NSCoder*) coder {
-    if (self = [super initWithCoder: coder]) {
-        self.backgroundColor = [UIColor clearColor];
-        CGSize size = self.frame.size;
-        self.drawingContext = [self createDrawingContext: size];
-        self.pixelWidth = (int)size.width/40.0;
-        self.pixelHeight = (int)size.height/40.0;
-    }
-    
-    return self;
-}
-
 - (void)plotX:(int)x Y:(int)y red:(int)r green:(int)g blue:(int)b
 {
-    CGRect rectangle = CGRectMake(x*self.pixelWidth, y*self.pixelHeight, self.pixelWidth, self.pixelHeight);
-    CGContextSetRGBFillColor(self.drawingContext, r/255.0, g/255.0, b/255.0, 1.0);
-    CGContextSetRGBStrokeColor(self.drawingContext, r/255.0, g/255.0, b/255.0, 1.0);
-    CGContextFillRect(self.drawingContext, rectangle);
-}
-
-- (CGContextRef) createDrawingContext: (CGSize) size  {
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef context = CGBitmapContextCreate(NULL, size.width, size.height, 8, size.width*4, colorSpace, kCGImageAlphaPremultipliedLast);
-    CGColorSpaceRelease(colorSpace);
+    CGSize size = self.frame.size;
+    int pixelWidth = (int)size.width/40.0;
+    int pixelHeight = (int)size.height/40.0;
     
-    CGContextTranslateCTM(context, 0, size.height);
-    CGContextScaleCTM(context, 1.0, -1.0);
-    return context;
+    CGRect rectangle = CGRectMake(x*pixelWidth, y*pixelHeight, pixelWidth, pixelHeight);
+    
+    rpix[x][y] = r;
+    gpix[x][y] = g;
+    bpix[x][y] = b;
+    
+    [self setNeedsDisplayInRect:rectangle];
 }
 
 - (void)drawRect:(CGRect) rect {
-    UIGraphicsPushContext(self.drawingContext);
-    CGImageRef cgImage = CGBitmapContextCreateImage(self.drawingContext);
-    UIImage *uiImage = [[UIImage alloc] initWithCGImage:cgImage];
-    UIGraphicsPopContext();
-    CGImageRelease(cgImage);
-    [uiImage drawInRect: rect];
+    
+    CGSize size = self.frame.size;
+    int pixelWidth = (int)size.width/40.0;
+    int pixelHeight = (int)size.height/40.0;
+    
+    int x0 = ((int)(rect.origin.x))/pixelWidth;
+    int y0 = ((int)(rect.origin.y))/pixelHeight;
+    int xT = x0 + rect.size.width/pixelWidth;
+    int yT = y0 + rect.size.height/pixelHeight;
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    for (int x=x0; x<xT; x++) {
+        for (int y=y0; y<yT; y++) {
+            CGRect pixRect = CGRectMake(x*pixelWidth, y*pixelHeight, pixelWidth, pixelHeight);
+            int r = rpix[x][y];
+            int g = gpix[x][y];
+            int b = bpix[x][y];
+            CGContextSetRGBFillColor(context, r/255.0, g/255.0, b/255.0, 1.0);
+            CGContextSetRGBStrokeColor(context, r/255.0, g/255.0, b/255.0, 1.0);
+            CGContextFillRect(context, pixRect);
+        }
+    }
+    
 }
 
 @end

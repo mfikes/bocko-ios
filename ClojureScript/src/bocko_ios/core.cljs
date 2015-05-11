@@ -17,5 +17,4 @@
                           new-color (nth new-col y)]
                       (when-not (= old-color new-color)
                         (let [[r g b] (new-color color-map)]
-                          (.plotXYRedGreenBlue canvas-view-controller x y r g b))))))))
-            (.refreshDisplay canvas-view-controller)))))))
+                          (.plotXYRedGreenBlue canvas-view-controller x y r g b))))))))))))))
