@@ -2,6 +2,8 @@
 
 Render Bocko onto iOS: Using a ClojureScript REPL, you can render [Bocko](https://github.com/mfikes/bocko) into a native iOS app running in a simulator or on your device.
 
+<img src="icon.png"/>
+
 # Prerequisites
 
 You need Lein and CocoaPods and Xcode.
