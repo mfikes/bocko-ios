@@ -66,10 +66,9 @@ void uncaughtExceptionHandler(NSException *exception) {
     // Use Ambly to manage JavaScriptCore
     
     NSLog(@"Initializing ClojureScript");
-    self.contextManager = [[ABYContextManager alloc] initWithContext:context
+    self.contextManager = [[ABYContextManager alloc] initWithContext:[context JSGlobalContextRef]
                                              compilerOutputDirectory:compilerOutputDirectory];
     [self.contextManager setupGlobalContext];
-    [self.contextManager setUpExceptionLogging];
     [self.contextManager setUpConsoleLog];
     [self.contextManager setUpTimerFunctionality];
     
@@ -86,7 +85,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     [self.contextManager bootstrapWithDepsFilePath:mainJsFilePath
                                       googBasePath:[[googDirectory URLByAppendingPathComponent:@"base" isDirectory:NO] URLByAppendingPathExtension:@"js"].path];
     
-    [self requireAppNamespaces:self.contextManager.context];
+    [self requireAppNamespaces:context];
     
 #else
 
@@ -148,7 +147,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (void)viewReady:(id)view
 {
     // Call JS init fn
-    JSValue* initFn = [self getValue:@"init" inNamespace:@"bocko-ios.core" fromContext:self.contextManager.context];
+    JSValue* initFn = [self getValue:@"init" inNamespace:@"bocko-ios.core" fromContext:[JSContext contextWithJSGlobalContextRef:self.contextManager.context]];
     NSAssert(!initFn.isUndefined, @"Could not find the app init function");
     [initFn callWithArguments:@[view]];
 }
