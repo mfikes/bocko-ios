@@ -14,26 +14,7 @@ You need Lein and CocoaPods and Xcode.
 lein new bocko-ios my-project
 ```
 
-Then find a short README.md at the top-level of the generated project, explaining how to get up and running.
-
-# Detailed Usage
-
-1. Clone this repo.
-2. In the `ClojureScript` directory run `lein cljsbuild once dev`.
-3. In the `iOS` directory run `pod install`.
-4. Open `Bocko.xcworkspace` and run the Bocko app in a simulator or on a device.
-5. In the `ClojureScript` directory run `script/repl`.
-6. Choose your discovered Bocko app.
-7. In the REPL, `(require '[bocko.core :refer [color plot scrn hlin vlin clear *color*]])`.
-
-Now you can use Bocko, plotting in your simulator or on your device.
-
-```
-cljs.user=> (color :pink)
-nil
-cljs.user=> (plot 3 4)
-nil
-```
+Then find a short `README.md` at the top-level of the generated project, explaining how to get up and running.
 
 Here is a pic of what `bocko-ios` looks like in action:
 
