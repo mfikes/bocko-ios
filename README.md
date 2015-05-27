@@ -10,6 +10,14 @@ You need Lein and CocoaPods and Xcode.
 
 # Usage
 
+```
+lein new bocko-ios my-project
+```
+
+Then find a short README.md at the top-level of the generated project, explaining how to get up and running.
+
+# Detailed Usage
+
 1. Clone this repo.
 2. In the `ClojureScript` directory run `lein cljsbuild once dev`.
 3. In the `iOS` directory run `pod install`.
