@@ -16,11 +16,11 @@ lein new bocko-ios my-project
 
 Then find a short `README.md` at the top-level of the generated project, explaining how to get up and running.
 
+# Examples
+
 Here is a pic of what `bocko-ios` looks like in action:
 
 ![iOS and REPL](https://pbs.twimg.com/media/CElZIPdUIAAC7Us.jpg)
-
-# Examples
 
 Try some of the examples from the [Bocko](https://github.com/mfikes/bocko#examples) page.
 
