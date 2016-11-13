@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B9C127963BA0BD6A1A3E78FF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C8AE83AF021BAAC7684AD1 /* libPods.a */; };
+		3DB885E23CEBAF4E4EFE8B2B /* libPods-Bocko.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D0E534CE782F77271DCD55A /* libPods-Bocko.a */; };
 		ED65C3DC1AFE424400FEC15F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED65C3DB1AFE424400FEC15F /* main.m */; };
 		ED65C3DF1AFE424400FEC15F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED65C3DE1AFE424400FEC15F /* AppDelegate.m */; };
 		ED65C3E21AFE424400FEC15F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED65C3E11AFE424400FEC15F /* ViewController.m */; };
@@ -19,9 +19,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		101715C194C290CEE6FE1A56 /* Pods-Bocko.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bocko.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bocko/Pods-Bocko.debug.xcconfig"; sourceTree = "<group>"; };
 		13C8AE83AF021BAAC7684AD1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F1EE67707BF5384E07132CD /* Pods-Bocko.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bocko.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bocko/Pods-Bocko.release.xcconfig"; sourceTree = "<group>"; };
 		54ECAD17DD24AF19D3B4F04E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7129F09E6E7E46B32454500B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		7D0E534CE782F77271DCD55A /* libPods-Bocko.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bocko.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED65C3D61AFE424400FEC15F /* Bocko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bocko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED65C3DA1AFE424400FEC15F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED65C3DB1AFE424400FEC15F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -42,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9C127963BA0BD6A1A3E78FF /* libPods.a in Frameworks */,
+				3DB885E23CEBAF4E4EFE8B2B /* libPods-Bocko.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +57,8 @@
 			children = (
 				54ECAD17DD24AF19D3B4F04E /* Pods.debug.xcconfig */,
 				7129F09E6E7E46B32454500B /* Pods.release.xcconfig */,
+				101715C194C290CEE6FE1A56 /* Pods-Bocko.debug.xcconfig */,
+				1F1EE67707BF5384E07132CD /* Pods-Bocko.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -62,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				13C8AE83AF021BAAC7684AD1 /* libPods.a */,
+				7D0E534CE782F77271DCD55A /* libPods-Bocko.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -118,11 +124,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ED65C3F91AFE424400FEC15F /* Build configuration list for PBXNativeTarget "Bocko" */;
 			buildPhases = (
-				747E0FEDB80B7B9E27C9DCC5 /* Check Pods Manifest.lock */,
+				747E0FEDB80B7B9E27C9DCC5 /* [CP] Check Pods Manifest.lock */,
 				ED65C3D21AFE424400FEC15F /* Sources */,
 				ED65C3D31AFE424400FEC15F /* Frameworks */,
 				ED65C3D41AFE424400FEC15F /* Resources */,
-				FBAE99D9FB11F1844C400694 /* Copy Pods Resources */,
+				FBAE99D9FB11F1844C400694 /* [CP] Copy Pods Resources */,
+				C73C8882E1B7A0906DB108C1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -179,34 +186,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		747E0FEDB80B7B9E27C9DCC5 /* Check Pods Manifest.lock */ = {
+		747E0FEDB80B7B9E27C9DCC5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		FBAE99D9FB11F1844C400694 /* Copy Pods Resources */ = {
+		C73C8882E1B7A0906DB108C1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bocko/Pods-Bocko-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBAE99D9FB11F1844C400694 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bocko/Pods-Bocko-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -327,7 +349,7 @@
 		};
 		ED65C3FA1AFE424400FEC15F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 54ECAD17DD24AF19D3B4F04E /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 101715C194C290CEE6FE1A56 /* Pods-Bocko.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Bocko/Info.plist;
@@ -338,7 +360,7 @@
 		};
 		ED65C3FB1AFE424400FEC15F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7129F09E6E7E46B32454500B /* Pods.release.xcconfig */;
+			baseConfigurationReference = 1F1EE67707BF5384E07132CD /* Pods-Bocko.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Bocko/Info.plist;
